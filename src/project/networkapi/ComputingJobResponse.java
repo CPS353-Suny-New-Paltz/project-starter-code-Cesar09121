@@ -15,6 +15,7 @@ public interface ComputingJobResponse {
 	
 	/**
      * Gets the output destination used in the job.
+     * 
      * @return output destination
      */
 	OutputSource getOutput();

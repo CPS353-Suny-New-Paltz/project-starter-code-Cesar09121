@@ -17,6 +17,7 @@ public class ComputingJobRequest {
 		
 		/**
 		 * Creates a new computing job request.
+		 * 
 		 * @param input where to read data from
 		 * @param output where to write results  
 		 * @param delimiters formatting characters (can be null)
@@ -30,6 +31,7 @@ public class ComputingJobRequest {
 		
 		/**
 		 * Returns the input source for this job
+		 * 
 		 * @return input source
 		 */
 		public InputSource getInput() {
@@ -37,6 +39,7 @@ public class ComputingJobRequest {
 		}
 		/**
 		 * Returns the output source for this job
+		 * 
 		 * @return output source
 		 */
 		public OutputSource getOutput() {
@@ -45,6 +48,7 @@ public class ComputingJobRequest {
 		
 		/**
 		 * Returns the delimiters for this job.
+		 * 
 		 * @return delimiters configuration
 		 */
 		public Delimiters getDelimiters() {
@@ -53,6 +57,7 @@ public class ComputingJobRequest {
 		/**
 		 * Gets delimiters or provides default ones if none specified
 		 * This makes delimiters optional for users
+		 * 
 		 * @return delimiters configuration
 		 */
 		public Delimiters getDelimitersOrDefault() {

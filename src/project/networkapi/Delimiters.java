@@ -19,6 +19,7 @@ public class Delimiters {
 	
 	/**
 	 * Construct a delimiter configuration.
+	 * 
 	 * @param delimiters characters for separating inputs
 	 * @param delimiterResult characters for separating results
 	 */
@@ -30,6 +31,7 @@ public class Delimiters {
 	
 	/**
 	 * Gets the delimiter that separates different input-result pairs.
+	 * 
 	 * @return delimiter string
 	 */
 	public String getDelimiters() {
@@ -37,6 +39,7 @@ public class Delimiters {
 	}
 	/**
 	 * Gets the delimiter that separates input from output.
+	 * 
 	 * @return delimiter string  
 	 */
 	public String getDelimiterResult() {

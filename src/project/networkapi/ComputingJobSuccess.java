@@ -37,6 +37,7 @@ public enum ComputingJobSuccess {
 	
 	/**
 	 * Gets the user-friendly message for this status.
+	 * 
 	 * @return descriptive message string
 	 */
 	public String getMessage() {

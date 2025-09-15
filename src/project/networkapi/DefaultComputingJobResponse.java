@@ -15,6 +15,7 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
     
     /**
      * Creates response with computing job information.
+     * 
      * @param input the input source used
      * @param output the output destination used
      * @param delimiters the delimiters used
@@ -29,6 +30,7 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
     
     /**
      * Returns the input source used in this job.
+     * 
      * @return input source
      */
     @Override
@@ -38,6 +40,7 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
     
     /**
      * Returns the output destination used in this job.
+     * 
      * @return output destination
      */
     @Override
@@ -47,6 +50,7 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
     
     /**
      * Returns the delimiters used for formatting.
+     * 
      * @return delimiters configuration
      */
     @Override
@@ -56,6 +60,7 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
     
     /**
      * Returns the job completion status.
+     * 
      * @return job status with success checking and message
      */
     @Override
