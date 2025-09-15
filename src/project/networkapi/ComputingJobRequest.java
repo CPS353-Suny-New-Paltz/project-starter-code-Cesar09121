@@ -1,8 +1,8 @@
-package project.networkAPI;
+package project.networkapi;
 
 
 /**
- * Request class for computing job from user to compute engine
+ * Request class for computing job from user to compute engine.
  * Contains needed information to process a computing job:
  * - Input: Input data for computation
  * - Output: Where output/results go to
@@ -11,8 +11,8 @@ package project.networkAPI;
 
 public class ComputingJobRequest {
 	
-		private final Input input ;
-		private final Output output;
+		private final InputSource inputSource;
+		private final OutputSource outputSource;
 		private final Delimiters delimiters;
 		
 		/**
@@ -22,9 +22,9 @@ public class ComputingJobRequest {
 		 * @param delimiters formatting characters (can be null)
 		 */
 		
-		public ComputingJobRequest(Input input, Output output, Delimiters delimiters) {
-			this.input = input;
-			this.output = output;
+		public ComputingJobRequest(InputSource inputSource, OutputSource outputSource, Delimiters delimiters) {
+			this.inputSource = inputSource;
+			this.outputSource = outputSource;
 			this.delimiters = delimiters;
 		}
 		
@@ -32,15 +32,15 @@ public class ComputingJobRequest {
 		 * Returns the input source for this job
 		 * @return input source
 		 */
-		public Input getInput() {
-			return input;
+		public InputSource getInput() {
+			return inputSource;
 		}
 		/**
 		 * Returns the output source for this job
 		 * @return output source
 		 */
-		public Output getOutput() {
-			return output;
+		public OutputSource getOutput() {
+			return outputSource;
 		}
 		
 		/**

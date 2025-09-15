@@ -1,8 +1,8 @@
-package project.networkAPI;
+package project.networkapi;
 
 
 /**
- * Enum for tracking job status instead of using raw booleans
+ * Enum for tracking job status instead of using raw booleans.
  * Combines both status checking and user messages in one place
  */
 
@@ -16,6 +16,7 @@ public enum ComputingJobSuccess {
 	
 	/**
 	 * Constructor that sets success status and message.
+	 * 
 	 * @param success whether this represents successful operation
 	 * @param message user-friendly description
 	 */
@@ -27,6 +28,7 @@ public enum ComputingJobSuccess {
 	
 	/**
 	 * Returns true if this status represents successful operation.
+	 * 
 	 * @return true for success, false for error
 	 */
 	public boolean success() {

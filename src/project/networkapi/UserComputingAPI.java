@@ -1,4 +1,4 @@
-package project.networkAPI;
+package project.networkapi;
 import project.annotations.NetworkAPI;
 
 /**
@@ -15,6 +15,6 @@ public interface UserComputingAPI {
 	 * @return response with job status and information
 	 */
 	
-	ComputingJobResponse submission (ComputingJobRequest computingJobRequest);
+	ComputingJobResponse submission(ComputingJobRequest computingJobRequest);
 
 }

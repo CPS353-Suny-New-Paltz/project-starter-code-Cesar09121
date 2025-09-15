@@ -1,9 +1,9 @@
-package project.networkAPI;
+package project.networkapi;
 import project.annotations.NetworkAPIPrototype;
 
 
 /**
- * Prototype implementation of the user computing API
+ * Prototype implementation of the user computing API.
  * This is a simple placeholder implementation for testing the API design
  * Real implementation would actually process the computing job
  */
@@ -19,7 +19,7 @@ public class UserComputingAPIPrototype implements UserComputingAPI {
 	@Override
 	@NetworkAPIPrototype
 	
-	public ComputingJobResponse submission (ComputingJobRequest computingJobRequest) {
+	public ComputingJobResponse submission(ComputingJobRequest computingJobRequest) {
 		
 		
 		// Use default delimiters if none provided

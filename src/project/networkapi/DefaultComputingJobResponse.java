@@ -1,4 +1,4 @@
-package project.networkAPI;
+package project.networkapi;
 
 /**
  * Default implementation for ComputingJobResponse interface
@@ -7,8 +7,8 @@ package project.networkAPI;
  */
 public class DefaultComputingJobResponse implements ComputingJobResponse{
 	
-	private final Input input;
-    private final Output output;
+	private final InputSource inputSource;
+    private final OutputSource outputSource;
     private final Delimiters delimiters;
     private final ComputingJobSuccess status;
 
@@ -20,9 +20,9 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
      * @param delimiters the delimiters used
      * @param status the job status
      */
-    public DefaultComputingJobResponse(Input input, Output output, Delimiters delimiters, ComputingJobSuccess status) {
-        this.input = input;
-        this.output = output;
+    public DefaultComputingJobResponse(InputSource inputSource, OutputSource outputSource, Delimiters delimiters, ComputingJobSuccess status) {
+        this.inputSource = inputSource;
+        this.outputSource = outputSource;
         this.delimiters = delimiters;
         this.status = status;
     }
@@ -32,8 +32,8 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
      * @return input source
      */
     @Override
-    public Input getInput() {
-    	return input;
+    public InputSource getInput() {
+    	return inputSource;
     }
     
     /**
@@ -41,8 +41,8 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
      * @return output destination
      */
     @Override
-    public Output getOutput() {
-    	return output;
+    public OutputSource getOutput() {
+    	return outputSource;
     }
     
     /**
