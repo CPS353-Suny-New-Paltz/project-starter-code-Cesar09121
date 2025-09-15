@@ -16,9 +16,9 @@ public class ComputingJobRequest {
 		private final Delimiters delimiters;
 		
 		// Creates a new computing job request
-		public ComputingJobRequest(InputSource input, OutputSource output, Delimiters delimiters) {
-			this.inputSource = input; // Input where to read data from
-			this.outputSource = output; // Output where to write results
+		public ComputingJobRequest(InputSource inputSource, OutputSource outputSource, Delimiters delimiters) {
+			this.inputSource = inputSource; // Input where to read data from
+			this.outputSource = outputSource; // Output where to write results
 			this.delimiters = delimiters; // Delimiters formatting characters (can be null or default)
 		}
 		
