@@ -6,6 +6,9 @@ package project.networkAPI;
  * 
  */
 public interface Output {
-
+	/**
+     * Returns location identifier for output destination.
+     * @return location string (URL, file path, etc.)
+     */
 	String getLocation();
 }

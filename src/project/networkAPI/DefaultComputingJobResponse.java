@@ -28,10 +28,6 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
     }
     
     /**
-     * Preserves Input and Output objects instead of location string only
-     */
-    
-    /**
      * Returns the input source used in this job.
      * @return input source
      */

@@ -10,10 +10,10 @@ public interface UserComputingAPI {
 	
 	
 	/**
-     * Submits a computing job for processing
-     * ComputingJobRequest contains input, output, and delimiter details
-     * Returns response with job status and information
-     */
+	 * Submits a computing job for processing
+	 * @param computingJobRequest contains input, output, and delimiter details
+	 * @return response with job status and information
+	 */
 	
 	ComputingJobResponse submission (ComputingJobRequest computingJobRequest);
 

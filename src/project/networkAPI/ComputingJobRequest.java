@@ -53,6 +53,7 @@ public class ComputingJobRequest {
 		/**
 		 * Gets delimiters or provides default ones if none specified
 		 * This makes delimiters optional for users
+		 * @return delimiters configuration
 		 */
 		public Delimiters getDelimitersOrDefault() {
 			return delimiters != null ? delimiters : Delimiters.defaultDelimiters();

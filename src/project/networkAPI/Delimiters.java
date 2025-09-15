@@ -42,12 +42,13 @@ public class Delimiters {
 	public String getDelimiterResult() {
 		return delimiterResult;
 	}
+	
 	/**
 	 * Creates method for returning default delimiters 
 	 * - delimiters: " ; "
 	 * - delimiterResult: "! = " 
+	 * @return default delimiters
 	 */
-	
 	public static Delimiters defaultDelimiters() {
 		return new Delimiters(" ; ", "! = ");
 	}
