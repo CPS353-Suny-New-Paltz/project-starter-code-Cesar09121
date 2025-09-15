@@ -31,22 +31,37 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
      * Preserves Input and Output objects instead of location string only
      */
     
+    /**
+     * Returns the input source used in this job.
+     * @return input source
+     */
     @Override
     public Input getInput() {
     	return input;
     }
+    
+    /**
+     * Returns the output destination used in this job.
+     * @return output destination
+     */
     @Override
     public Output getOutput() {
     	return output;
     }
     
-    // Returns delimiters that used for formatting
+    /**
+     * Returns the delimiters used for formatting.
+     * @return delimiters configuration
+     */
     @Override
     public Delimiters getDelimiters() {
     	return delimiters;
     }
     
-    // Provides success checking and message 
+    /**
+     * Returns the job completion status.
+     * @return job status with success checking and message
+     */
     @Override
     public ComputingJobSuccess getStatus() {
     	return status;
