@@ -6,32 +6,16 @@ package project.networkapi;
 
 public interface ComputingJobResponse {
 
-	/**
-	 * Gets the input source used in the job.
-	 * 
-	 * @return input source
-	 */
+	// Gets input location in the computing job
 	InputSource getInput();
 	
-	/**
-     * Gets the output destination used in the job.
-     * 
-     * @return output destination
-     */
+	// Gets output destination in the computing job
 	OutputSource getOutput();
 	
-	/**
-     * Gets the delimiters used for formatting.
-     * 
-     * @return delimiters configuration
-     */
+	// Get the delimiters for formatting 
 	Delimiters getDelimiters();
 	
-	/**
-     * Gets the job status with success checking and message.
-     * 
-     * @return job status
-     */
+	// Gets job status within success checking and message
 	ComputingJobSuccess getStatus();
 	
 }

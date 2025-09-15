@@ -28,42 +28,25 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
         this.status = status;
     }
     
-    /**
-     * Returns the input source used in this job.
-     * 
-     * @return input source
+    /*
+     * Preserves Input and Output objects instead of location string only
      */
-    @Override
+  
     public InputSource getInput() {
     	return inputSource;
     }
     
-    /**
-     * Returns the output destination used in this job.
-     * 
-     * @return output destination
-     */
-    @Override
     public OutputSource getOutput() {
     	return outputSource;
     }
     
-    /**
-     * Returns the delimiters used for formatting.
-     * 
-     * @return delimiters configuration
-     */
-    @Override
+    
+    // Returns delimiters that used for formatting
     public Delimiters getDelimiters() {
     	return delimiters;
     }
     
-    /**
-     * Returns the job completion status.
-     * 
-     * @return job status with success checking and message
-     */
-    @Override
+    // Returns the job completion status
     public ComputingJobSuccess getStatus() {
     	return status;
     }

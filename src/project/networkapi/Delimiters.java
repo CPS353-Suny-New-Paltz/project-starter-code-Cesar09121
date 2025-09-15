@@ -29,19 +29,12 @@ public class Delimiters {
 		
 	}
 	
-	/**
-	 * Gets the delimiter that separates different input-result pairs.
-	 * 
-	 * @return delimiter string
-	 */
+	// Gets the delimiter that separates different input-result pairs
 	public String getDelimiters() {
 		return delimiters;
 	}
-	/**
-	 * Gets the delimiter that separates input from output.
-	 * 
-	 * @return delimiter string  
-	 */
+	
+	// Gets the delimiter that separates input from output
 	public String getDelimiterResult() {
 		return delimiterResult;
 	}
