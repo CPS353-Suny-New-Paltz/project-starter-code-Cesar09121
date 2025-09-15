@@ -15,22 +15,38 @@ public class ComputingJobRequest {
 		private final Output output;
 		private final Delimiters delimiters;
 		
-		// Creates a new computing job request
+		/**
+		 * Creates a new computing job request.
+		 * @param input where to read data from
+		 * @param output where to write results  
+		 * @param delimiters formatting characters (can be null)
+		 */
 		
 		public ComputingJobRequest(Input input, Output output, Delimiters delimiters) {
-			this.input = input; // Input where to read data from
-			this.output = output; // Output where to write results
-			this.delimiters = delimiters; // Delimiters formatting characters (can be null or default)
+			this.input = input;
+			this.output = output;
+			this.delimiters = delimiters;
 		}
 		
+		/**
+		 * Returns the input source for this job
+		 * @return input source
+		 */
 		public Input getInput() {
 			return input;
 		}
-		
+		/**
+		 * Returns the output source for this job
+		 * @return output source
+		 */
 		public Output getOutput() {
 			return output;
 		}
 		
+		/**
+		 * Returns the delimiters for this job.
+		 * @return delimiters configuration
+		 */
 		public Delimiters getDelimiters() {
 			return delimiters;
 		}

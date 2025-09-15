@@ -17,18 +17,28 @@ public class Delimiters {
 	private final String delimiterResult;
 	
 	
-	//Construct a delimiter configuration 
+	/**
+	 * Construct a delimiter configuration.
+	 * @param delimiters characters for separating inputs
+	 * @param delimiterResult characters for separating results
+	 */
 	public Delimiters(String delimiters, String delimiterResult) {
-		this.delimiters = delimiters; // delimiters characters for separating inputs	
-		this.delimiterResult = delimiterResult;  //delimiterResult characters for separating results
+		this.delimiters = delimiters; 	
+		this.delimiterResult = delimiterResult;
 		
 	}
 	
-	// Gets the delimiter that separates different input-result pairs
+	/**
+	 * Gets the delimiter that separates different input-result pairs.
+	 * @return delimiter string
+	 */
 	public String getDelimiters() {
 		return delimiters;
 	}
-	// Gets the delimiter that separates input from output
+	/**
+	 * Gets the delimiter that separates input from output.
+	 * @return delimiter string  
+	 */
 	public String getDelimiterResult() {
 		return delimiterResult;
 	}
