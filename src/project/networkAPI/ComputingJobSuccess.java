@@ -1,7 +1,7 @@
 package project.networkAPI;
 
 
-/*
+/**
  * Enum for tracking job status instead of using raw booleans
  * Combines both status checking and user messages in one place
  */

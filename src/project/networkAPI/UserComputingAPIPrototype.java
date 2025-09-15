@@ -20,7 +20,7 @@ public class UserComputingAPIPrototype implements UserComputingAPI {
 		Delimiters delimiters = computingJobRequest.getDelimitersOrDefault();
 		
 		
-		/*
+		/**
 		 * Create successful response using DefaultComputingJobResponse implementation
 	     * Maintains wire compatibility if Input/Output implementation changes
 		 * Returns original input/output objects

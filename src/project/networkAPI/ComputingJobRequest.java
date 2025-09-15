@@ -1,7 +1,7 @@
 package project.networkAPI;
 
 
-/*
+/**
  * Request class for computing job from user to compute engine
  * Contains needed information to process a computing job:
  * - Input: Input data for computation

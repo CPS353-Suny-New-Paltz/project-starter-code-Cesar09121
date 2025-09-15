@@ -1,6 +1,6 @@
 package project.networkAPI;
 
-/*
+/**
  * Response sent back to user after submitting a computing job
  */
 

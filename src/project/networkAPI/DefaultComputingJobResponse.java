@@ -1,6 +1,6 @@
 package project.networkAPI;
 
-/*
+/**
  * Default implementation for ComputingJobResponse interface
  * Stores original input/output objects (not just location string)
  * 
@@ -20,7 +20,7 @@ public class DefaultComputingJobResponse implements ComputingJobResponse{
         this.status = status;
     }
     
-    /*
+    /**
      * Preserves Input and Output objects instead of location string only
      */
     public Input getInput() {
