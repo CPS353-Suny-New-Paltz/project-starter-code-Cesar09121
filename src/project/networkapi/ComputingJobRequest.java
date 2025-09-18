@@ -21,22 +21,16 @@ public class ComputingJobRequest {
 			this.outputSource = outputSource; // Output where to write results
 			this.delimiters = delimiters; // Delimiters formatting characters (can be null or default)
 		}
-		
-		// Gets the input source location for reading data
+
 		public InputSource getInput() {
 			return inputSource;
 		}
-		
-		// Gets the output destination for writing results
+
 		public OutputSource getOutput() {
 			return outputSource;
 		}
 		
-		// Gets the delimiters for formatting output
-		public Delimiters getDelimiters() {
-			return delimiters;
-		}
-		
+
 		/**
 		 * Gets delimiters or provides default ones if none specified
 		 * This makes delimiters optional for users
