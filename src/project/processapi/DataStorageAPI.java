@@ -13,6 +13,6 @@ public interface DataStorageAPI {
 	DataReadResponse readInput(DataReadRequest readRequest);
 	
 	// Write formatted output/result to the specified output destination 
-	DataWriteResponse writeOutput (DataWriteRequest writeRequest);
+	DataWriteResponse writeOutput(DataWriteRequest writeRequest);
 	
 }
