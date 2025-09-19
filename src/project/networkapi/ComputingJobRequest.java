@@ -25,7 +25,6 @@ public class ComputingJobRequest {
 		public InputSource getInput() {
 			return inputSource;
 		}
-		
 
 		public OutputSource getOutput() {
 			return outputSource;
