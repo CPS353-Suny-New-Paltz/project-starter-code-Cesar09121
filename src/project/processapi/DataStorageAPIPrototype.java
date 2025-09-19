@@ -1,14 +1,14 @@
 package project.processapi;
-import project.annotations.ProcessAPI;
+import project.annotations.ProcessAPIPrototype;
 
 /*
  * Demonstrates how the user uses the DataStorageAPI for reading and writing
  * 
  */
 
-@ProcessAPI
+
 public class DataStorageAPIPrototype {
-	
+	@ProcessAPIPrototype
 	// Shows the basics of using the API for reading input and writing output
 	public void prototype(DataStorageAPI dataStorageAPI) {
 		

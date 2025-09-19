@@ -8,24 +8,18 @@ package project.processapi;
  */
 public class DataWriteResponse {
 	
-	public final boolean success;
-	public final String message;
+	private final DataOperationStatus status;
 	
 	// Create a new response with the write operation status
-	public DataWriteResponse(boolean success, String message) {
-		this.message=message;
-		this.success=success;
+	public DataWriteResponse(DataOperationStatus status) {
+		this.status = status;
 	}
 
-	// Checks if the operation is successful or failed
-	public boolean isSuccess() {
-		return success;
+	// Gets the operation status (success or failed) and message
+	public DataOperationStatus getStatus() {
+		return status;
 	}
-
-	// Gets information about what happened during the operation
-	public String getMessage() {
-		return message;
-	}
+		
 	
 	
 

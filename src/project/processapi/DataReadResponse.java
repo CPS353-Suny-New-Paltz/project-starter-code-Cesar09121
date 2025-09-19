@@ -10,14 +10,12 @@ public class DataReadResponse {
 
 	
 	private final List<Integer> data;
-	private final boolean success;
-	private final String message;
+	private final DataOperationStatus status;
 	
 	// Creates a new response with read data and operation status
-	public DataReadResponse(List<Integer>data,boolean success, String message) {
+	public DataReadResponse(List<Integer>data,DataOperationStatus status) {
 		this.data=data;
-		this.success=success;
-		this.message=message;
+		this.status = status;
 	}
 
 	// Gets the data that's read successfully from the storage
@@ -26,14 +24,9 @@ public class DataReadResponse {
 		return data;
 	}
 
-	// Gets the status to see if the operation worked
-	public boolean isSuccess() {
-		return success;
-	}
-	
-	// Explains what happened if the operation failed and giving a congratulation message if successful
-	public String getMessage() {
-		return message;
+	// Gets operation status and message
+	public DataOperationStatus getStatus() {
+		return status;
 	}
 	
 	
