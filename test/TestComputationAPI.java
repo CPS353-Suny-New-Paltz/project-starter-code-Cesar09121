@@ -1,7 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import static org.junit.jupiter.api.Assertions.*;
-import project.conceptualapi.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import project.conceptualapi.ComputationAPIIm;
+import project.conceptualapi.ComputationAPI;
 /*
  * The unit test for Computation API implementation
  * Tests the function of factorial calculation

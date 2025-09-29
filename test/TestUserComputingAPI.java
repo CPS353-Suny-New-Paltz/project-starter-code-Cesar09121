@@ -2,9 +2,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import project.networkapi.*;
+import project.networkapi.UserComputingAPI;
+import project.networkapi.UserComputingAPIIm;
+import project.networkapi.InputSource;
+import project.networkapi.OutputSource;
+import project.networkapi.ComputingJobRequest;
+import project.networkapi.ComputingJobResponse;
+import project.networkapi.ComputingJobSuccess;
+import project.networkapi.Delimiters;
 import project.processapi.DataStorageAPI;
 /*
  * Unit test for UserComputingAPI implementation
