@@ -18,7 +18,7 @@ public class TestDataStorageAPI {
 	 */
 	
 	@BeforeEach
-	public void Setup() {
+	public void setUp() {
 		dataStorageAPI = new DataStorageAPIIm();
 	}
 	
