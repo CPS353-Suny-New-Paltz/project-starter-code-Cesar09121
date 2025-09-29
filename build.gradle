@@ -33,5 +33,5 @@ test {
     excludeTestMatching "TestComputationAPI"
     excludeTestMatching "TestDataStorageAPI"
     excludeTestMatching "TestUserComputatingAPI"
-    
+    }
 }
