@@ -11,8 +11,4 @@ public interface ComputationAPI {
 	
 	// Calculates factorial of the given number and return factorial result
 	long computeFactorial(int input);
-	
-	// Formatted results for displaying with input integer, factorial result, and delimiters for result displaying
-	String formatResult(int input, String inputOutputDelimiters, long output);
-	
 }

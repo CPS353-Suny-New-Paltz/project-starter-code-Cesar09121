@@ -14,8 +14,6 @@ public class ComputationAPIPrototype {
 		
 		// Calculating factorial of the given input value ( input value in this case is 4)
 		long result = computationAPI.computeFactorial(4);
-		
-		// Formatted result for displaying
-		String formattedResult = computationAPI.formatResult(4,"! = ", result);
+	
 	}
 }
