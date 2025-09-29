@@ -30,7 +30,9 @@ public class ComputingJobRequest {
 			return outputSource;
 		}
 		
-
+		public Delimiters getDelimiters() {
+		    return delimiters;
+		}
 		/**
 		 * Gets delimiters or provides default ones if none specified
 		 * This makes delimiters optional for users
