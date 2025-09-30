@@ -1,4 +1,6 @@
 import project.networkapi.InputSource;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -16,9 +18,9 @@ public class TestMemoryInput implements InputSource{
 		this.data = data;
 	}
 	
-	// Gets stored input in the memory
+	// Gets a copy of the test data list stored in memory
 	public List<Integer>getData(){
-		return data;
+		return new ArrayList<>(data);
 	}
 	
 	// Return a location for in-memory input 
