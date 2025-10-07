@@ -1,16 +1,29 @@
 package project.conceptualapi;
 /*
- * Empty implementation of ComputingAPI for testing
- * Factorial logic will be added soon
+ * Implementation of ComputingAPI for factorial calculation
+ * Handles the computation of factorial for the positive integers
  */
 public class ComputationAPIIm implements ComputationAPI{
 
 		/*
-		 * Currently returns 0 instead of actual factorial calculation
+		 * Calculates factorial of a given positive integer
 		 */
 	    @Override
 	    public long computeFactorial(int input) {
-	        return 0; // Default value for now
+	    	// Does not take negative integer
+	        if(input< 0) {
+	        	throw new IllegalArgumentException("Invalid integer!! (must be positive)");
+	        }
+	        // 0! =1 and 1! = 1
+	        if(input ==0 || input ==1) {
+	        	return 1;
+	        }
+	        // Calculates factorial
+	        long result =1;
+	        for(int i =2;i<=input;i++) {
+	        	result *= i;
+	        }
+	        return result;
 	    }
 	    
 
