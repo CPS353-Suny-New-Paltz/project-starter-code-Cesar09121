@@ -47,6 +47,7 @@ public class DataStorageAPIIm implements DataStorageAPI {
     public DataWriteResponse writeOutput(DataWriteRequest request) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(request.getLocation()))){
         	writer.write(request.getFormattedResult());
+        	
         	return new DataWriteResponse(DataOperationStatus.SUCCESS);
         }
         catch(IOException e ) {

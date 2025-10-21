@@ -18,7 +18,6 @@ import project.networkapi.UserComputingAPIIm;
  * Uses in-memory test infrastructure instead of actual file
  */
 
-
 public class IntegrationTest {
 	
 	private UserComputingAPI userAPI;           // Main API that user interact with
@@ -31,9 +30,9 @@ public class IntegrationTest {
 	 */
 	@BeforeEach
 	public void setUp() {
-		dataMemory = new TestDataStorageMemory();
-		computationAPI = new ComputationAPIIm();
-		userAPI = new UserComputingAPIIm(dataMemory);  // Creates user API with test data storage
+		dataMemory = new TestDataStorageMemory();			// Creates test data storage works with in-memory data
+		computationAPI = new ComputationAPIIm();  			// Creates a real computationAPI
+		userAPI = new UserComputingAPIIm(dataMemory, computationAPI);  // Creates user API with both dependencies
 				
 	}
 	
