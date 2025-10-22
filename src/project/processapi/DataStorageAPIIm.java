@@ -33,9 +33,9 @@ public class DataStorageAPIIm implements DataStorageAPI {
 				}
 			}
 				return new DataReadResponse(data, DataOperationStatus.SUCCESS);
-			} catch (IOException e) {
-			    return new DataReadResponse(null,DataOperationStatus.FAILED);
-		    }
+		} catch (IOException e) {
+		    return new DataReadResponse(null,DataOperationStatus.FAILED);
+	    }
 	}
   
 	/*
