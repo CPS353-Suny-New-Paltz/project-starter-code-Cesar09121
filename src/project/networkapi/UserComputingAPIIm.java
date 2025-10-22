@@ -11,7 +11,7 @@ import project.processapi.DataWriteResponse;
  * Implementation for UserComputingAPI that coordinates factorial computation
  * Uses both data storage component for reading/writing files and the computation component for calculations
  */
-public class UserComputingAPIIm implements UserComputingAPI	{
+public class UserComputingAPIIm implements UserComputingAPI {
 	// Dependency for coordination
 	private final DataStorageAPI dataStorageAPI;
 	private final ComputationAPI computationAPI;
