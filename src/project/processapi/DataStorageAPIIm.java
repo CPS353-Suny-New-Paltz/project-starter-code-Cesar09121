@@ -33,8 +33,7 @@ public class DataStorageAPIIm implements DataStorageAPI {
 				}
 			}
 				return new DataReadResponse(data, DataOperationStatus.SUCCESS);
-			}
-		    catch(IOException e) {
+			} catch (IOException e) {
 			    return new DataReadResponse(null,DataOperationStatus.FAILED);
 		    }
 	}
@@ -49,8 +48,8 @@ public class DataStorageAPIIm implements DataStorageAPI {
         	writer.write(request.getFormattedResult());
         	
         	return new DataWriteResponse(DataOperationStatus.SUCCESS);
-        }
-        catch(IOException e ) {
+        	
+        } catch (IOException e ) {
         	 return new DataWriteResponse(DataOperationStatus.FAILED);
         }
        
