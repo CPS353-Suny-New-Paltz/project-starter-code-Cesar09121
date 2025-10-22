@@ -24,11 +24,11 @@ public class DataStorageAPIIm implements DataStorageAPI {
 		
 		List<Integer> data = new ArrayList<>();
 		
-		try(BufferedReader reader = new BufferedReader(new FileReader(request.getLocation()))){
+		try (BufferedReader reader = new BufferedReader(new FileReader(request.getLocation()))){
 			String line;
 			while((line = reader.readLine()) != null) {
 				line = line.trim();
-				if(!line.isEmpty()) {
+				if (!line.isEmpty()) {
 					data.add(Integer.parseInt(line));
 				}
 			}
@@ -49,7 +49,7 @@ public class DataStorageAPIIm implements DataStorageAPI {
         	
         	return new DataWriteResponse(DataOperationStatus.SUCCESS);
         	
-        } catch (IOException e ) {
+        } catch (IOException e) {
         	 return new DataWriteResponse(DataOperationStatus.FAILED);
         }
        

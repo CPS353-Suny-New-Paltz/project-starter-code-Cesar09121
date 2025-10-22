@@ -2,7 +2,6 @@ package project.networkapi;
 import java.util.List;
 
 import project.conceptualapi.ComputationAPI;
-import project.conceptualapi.ComputationAPIIm;
 import project.processapi.DataReadRequest;
 import project.processapi.DataReadResponse;
 import project.processapi.DataStorageAPI;
@@ -36,7 +35,7 @@ public class UserComputingAPIIm implements UserComputingAPI	{
     			   request.getInput().getLocation()));
     	  
     	   
-    	   if(!readResponse.getStatus().isSuccess()) {
+    	   if (!readResponse.getStatus().isSuccess()) {
     		   return failureResponse(request);
     	   }
     	   
@@ -45,7 +44,7 @@ public class UserComputingAPIIm implements UserComputingAPI	{
     	   StringBuilder results = new StringBuilder();
     	   Delimiters delimiters = request.getDelimitersOrDefault();
     	   
-    	   for(int i =0;i< inputData.size();i++) {
+    	   for (int i =0;i< inputData.size();i++) {
     		   
     		   // Asks computation component to calculate the factorial
     		   long factorial = computationAPI.computeFactorial(inputData.get(i));
@@ -56,7 +55,7 @@ public class UserComputingAPIIm implements UserComputingAPI	{
     		   .append(factorial);
     		   
     		   // Adds delimiter between pairs except the last one
-    		   if(i<inputData.size()-1) {
+    		   if (i<inputData.size()-1) {
     			   results.append(delimiters.getDelimiters());
     		   }
     	   }
@@ -66,7 +65,7 @@ public class UserComputingAPIIm implements UserComputingAPI	{
     			   request.getOutput().getLocation(),results.toString()));
     	   
     	   // Checks if the writing as successful
-    	   if(!writeResponse.getStatus().isSuccess()) {
+    	   if (!writeResponse.getStatus().isSuccess()) {
     		   return failureResponse(request);
     	   }
     	   
