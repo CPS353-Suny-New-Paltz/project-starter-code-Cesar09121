@@ -78,8 +78,7 @@ public class UserComputingAPIIm implements UserComputingAPI	{
     			   ComputingJobSuccess.SUCCESS);
     	   
     	  
-       }
-       catch (Exception e){
+       }catch (Exception e){
     	   return failureResponse(request); // Return failure response if failure
     	   
        }
