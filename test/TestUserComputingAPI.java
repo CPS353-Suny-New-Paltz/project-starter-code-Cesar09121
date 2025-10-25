@@ -9,6 +9,7 @@ import project.networkapi.UserComputingAPI;
 import project.networkapi.UserComputingAPIIm;
 import project.networkapi.InputSource;
 import project.networkapi.OutputSource;
+import project.conceptualapi.ComputationAPI;
 import project.networkapi.ComputingJobRequest;
 import project.networkapi.ComputingJobResponse;
 import project.networkapi.ComputingJobSuccess;
@@ -30,6 +31,9 @@ public class TestUserComputingAPI {
 	@Mock 
 	private OutputSource mockOutputSource;  // Fake output source
 	
+	@Mock
+	private ComputationAPI mockComputationAPI;  // Fake calculation 
+	
 	// The API implementation we're testing
 	private UserComputingAPI userComputingAPI;
 	
@@ -42,8 +46,8 @@ public class TestUserComputingAPI {
 	public void setUp() {
 		// Initialize the mock objects with @Mock
 		MockitoAnnotations.openMocks(this);
-		// Create the implementation with the fake data storage dependency
-		userComputingAPI = new UserComputingAPIIm(mockDataStorage);
+		// Create the implementation with the fake data storage and fake calculation dependency
+		userComputingAPI = new UserComputingAPIIm(mockDataStorage,mockComputationAPI);
 	}
 	
 	/*

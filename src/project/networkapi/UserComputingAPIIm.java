@@ -1,30 +1,94 @@
 package project.networkapi;
+import java.util.List;
+
+import project.conceptualapi.ComputationAPI;
+import project.processapi.DataReadRequest;
+import project.processapi.DataReadResponse;
 import project.processapi.DataStorageAPI;
+import project.processapi.DataWriteRequest;
+import project.processapi.DataWriteResponse;
 /*
- * Empty implementation for UserComputingAPI for testing
- * Handles job submission from user but returns failure
- * Real logic will be added soon
+ * Implementation for UserComputingAPI that coordinates factorial computation
+ * Uses both data storage component for reading/writing files and the computation component for calculations
  */
-public class UserComputingAPIIm implements UserComputingAPI	{
-	// Dependency on data storage component for reading/writing files
-	private DataStorageAPI dataStorageAPI;
+public class UserComputingAPIIm implements UserComputingAPI {
+	// Dependency for coordination
+	private final DataStorageAPI dataStorageAPI;
+	private final ComputationAPI computationAPI;
 	
-	// Constructor that takes data storage dependency
-	public UserComputingAPIIm(DataStorageAPI dataStorageAPI) {
+	// Constructor for coordination component with dependencies
+	public UserComputingAPIIm(DataStorageAPI dataStorageAPI, ComputationAPI computationAPI) {
         this.dataStorageAPI = dataStorageAPI;
+        this.computationAPI = computationAPI;
     }
 	
 	/*
-	 * Placeholder implementation for job submission
+	 * Contains input/output locations and delimiters
+	 * Processes real computation job from input file to output file
+	 * Should return response with success or failure status
 	 */
 	@Override
     public ComputingJobResponse submission(ComputingJobRequest request) {
-        // Return failure response for now
-        return new DefaultComputingJobResponse(
-            request.getInput(), 
-            request.getOutput(), 
-            request.getDelimitersOrDefault(), 
-            ComputingJobSuccess.FAILED
-        );
+       try {
+    	   // Reads input from input location
+    	   DataReadResponse readResponse = dataStorageAPI.readInput(new DataReadRequest(
+    			   request.getInput().getLocation()));
+    	  
+    	   
+    	   if (!readResponse.getStatus().isSuccess()) {
+    		   return failureResponse(request);
+    	   }
+    	   
+    	   // Compute and format results
+    	   List<Integer> inputData = readResponse.getData();
+    	   StringBuilder results = new StringBuilder();
+    	   Delimiters delimiters = request.getDelimitersOrDefault();
+    	   
+    	   for (int i =0;i< inputData.size();i++) {
+    		   
+    		   // Asks computation component to calculate the factorial
+    		   long factorial = computationAPI.computeFactorial(inputData.get(i));
+    		   
+    		   // Format as a string (like "3!= 6")
+    		   results.append(inputData.get(i))
+    		   .append(delimiters.getDelimiterResult())
+    		   .append(factorial);
+    		   
+    		   // Adds delimiter between pairs except the last one
+    		   if (i<inputData.size()-1) {
+    			   results.append(delimiters.getDelimiters());
+    		   }
+    	   }
+    	   
+    	   // Writes formatted output to output file
+    	   DataWriteResponse writeResponse = dataStorageAPI.writeOutput(new DataWriteRequest(
+    			   request.getOutput().getLocation(),results.toString()));
+    	   
+    	   // Checks if the writing as successful
+    	   if (!writeResponse.getStatus().isSuccess()) {
+    		   return failureResponse(request);
+    	   }
+    	   
+    	   // Returns success response if succeeded
+    	   return new DefaultComputingJobResponse(
+    			   request.getInput(),
+    			   request.getOutput(),
+    			   delimiters,
+    			   ComputingJobSuccess.SUCCESS);
+    	   
+    	  
+       } catch (Exception e) {
+    	   return failureResponse(request); // Return failure response if failure
+    	   
+       }
     }
+	
+	// Helper method for creating a failure response
+	private ComputingJobResponse failureResponse(ComputingJobRequest request) {
+		return new DefaultComputingJobResponse(
+				request.getInput(),
+				request.getOutput(), 
+				request.getDelimitersOrDefault(), 
+				ComputingJobSuccess.FAILED);
+	}
 }
