@@ -26,7 +26,7 @@ public class TestDataStorageMemory implements DataStorageAPI{
 			testData.add(10);
 			testData.add(25); 
 			
-			// Returns test data with success status
+
 		    return new DataReadResponse(testData,DataOperationStatus.SUCCESS); 
 		}
 		// Failed if the location doesn't match

@@ -32,7 +32,7 @@ public class TestComputationAPI {
 		// Tests the factorial with input 3
 		long result = computationAPI.computeFactorial(3);
 		
-		// This should return the actual correct result now
+
 		assertEquals(6,result, "Calculate actual factorial and the result should be 6");
 		
 	}
