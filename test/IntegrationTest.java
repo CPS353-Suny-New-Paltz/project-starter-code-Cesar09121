@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,7 @@ import project.conceptualapi.ComputationAPIIm;
 import project.networkapi.UserComputingAPI;
 import project.networkapi.ComputingJobRequest;
 import project.networkapi.ComputingJobResponse;
+import project.networkapi.ComputingJobSuccess;
 import project.networkapi.UserComputingAPIIm;
 
 /*
@@ -57,7 +60,15 @@ public class IntegrationTest {
 		// Submit the job through the system
 		ComputingJobResponse response = userAPI.submission(request);
 		// Makes sure we get a response 
-		assertNotNull(response);
+		assertNotNull(response, "Response shouldn't be null");
+		// Checks that the job is successful
+		assertEquals(ComputingJobSuccess.SUCCESS,response.getStatus(), "Successfully with valid input!!");
+		
+		// Verifies the response contains correct input/output references
+		assertNotNull(response.getInput(), "Response should contain input source");
+		assertNotNull(response.getOutput(), "Response should contain output source");
+		assertEquals(input, response.getInput(), "Response should reference the same input");
+		assertEquals(output, response.getOutput(), "Response should reference the same output");
 	}
 	
 	
