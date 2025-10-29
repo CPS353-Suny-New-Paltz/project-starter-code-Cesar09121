@@ -43,8 +43,8 @@ public class TestDataStorageAPI {
 		
 		// Makes sure we get a response back
 		assertNotNull(response, "Read response should not be null");
-		// Makes sure that empty implementation returns failure
-		assertFalse(response.getStatus().isSuccess(),"Empty implementation shouldn't be read" );
+		// Checks the file and should return failure when it doesn't exist
+		assertFalse(response.getStatus().isSuccess(),"Should fail when file doesn't exist" );
 	}
 	
 	/*
@@ -59,8 +59,8 @@ public class TestDataStorageAPI {
 		
 		// Makes sure we get response back
 		assertNotNull(response, "Write response should not be null");
-		// Makes sure that empty implementation return failure
-		assertTrue(response.getStatus().isSuccess(),"Empty implementation shouldn't be written");
+		// Writes operation should succeed for valid file path 
+		assertTrue(response.getStatus().isSuccess(),"Write operation should succeed!!!");
 	}
 
 }
