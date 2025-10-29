@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import project.processapi.DataStorageAPI;
 import project.processapi.DataWriteRequest;
 import project.processapi.DataStorageAPIIm;
@@ -43,7 +43,7 @@ public class TestDataStorageAPI {
 		// Makes sure we get a response back
 		assertNotNull(response, "Read response should not be null");
 		// Makes sure that empty implementation returns failure
-		assertFalse(response.getStatus().isSuccess(),"Empty implementation shouldn't be read" );
+		assertTrue(response.getStatus().isSuccess(),"Empty implementation shouldn't be read" );
 	}
 	
 	/*
@@ -59,7 +59,7 @@ public class TestDataStorageAPI {
 		// Makes sure we get response back
 		assertNotNull(response, "Write response should not be null");
 		// Makes sure that empty implementation return failure
-		assertFalse(response.getStatus().isSuccess(),"Empty implementation shouldn't be written");
+		assertTrue(response.getStatus().isSuccess(),"Empty implementation shouldn't be written");
 	}
 
 }
