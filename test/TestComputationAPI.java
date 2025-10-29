@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import project.conceptualapi.ComputationAPIIm;
 import project.conceptualapi.ComputationAPI;
 /*
@@ -32,9 +34,17 @@ public class TestComputationAPI {
 		
 		// Makes sure that we won't get the default value 0
 		// This should fail until having real logic for factorial calculation
-		assertNotEquals(0,result, "Calculate actual factorial, not default");
+		assertEquals(6,result, "Calculate actual factorial and the result should be 6");
 		
 	}
-		
+	/*
+	 * Tests that in the negative number case, the exception will be thrown
+	 */
+	@Test
+	public void testComputeFactorialNegative() throws Exception {
+		assertThrows(IllegalArgumentException.class, () -> {
+			computationAPI.computeFactorial(-5);
+		}, "Negative number should throw IllegalArgumentException");
+	}
 
 }
