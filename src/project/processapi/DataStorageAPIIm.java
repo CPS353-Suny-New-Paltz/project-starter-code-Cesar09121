@@ -23,7 +23,12 @@ public class DataStorageAPIIm implements DataStorageAPI {
     public DataReadResponse readInput(DataReadRequest request) {
 		
 		List<Integer> data = new ArrayList<>();
-		
+		if (request == null) {
+	        throw new IllegalArgumentException("Request cannot be null");
+	    }
+		if (request.getLocation() == null || request.getLocation().isEmpty()) {
+		    throw new IllegalArgumentException("Location cannot be null or empty");
+		}
 		try (BufferedReader reader = new BufferedReader(new FileReader(request.getLocation()))){
 			String line;
 			while((line = reader.readLine()) != null) {
