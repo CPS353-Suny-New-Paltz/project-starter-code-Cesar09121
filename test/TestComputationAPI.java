@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import project.conceptualapi.ComputationAPIIm;
+import project.networkapi.UserComputingAPI;
+import project.networkapi.UserComputingAPIIm;
+import project.processapi.DataStorageAPI;
+import project.processapi.DataStorageAPIIm;
 import project.conceptualapi.ComputationAPI;
 /*
  * The unit test for Computation API implementation
@@ -13,6 +17,7 @@ public class TestComputationAPI {
 	
 	// The computation API instance we're testing
 	private ComputationAPI computationAPI;
+	private UserComputingAPI userComputingAPI;
 	
 	/*
 	 * Sets up the creating new implementation instance
@@ -22,6 +27,9 @@ public class TestComputationAPI {
 	public void setUp(){
 		// Creates a empty implementation for testing 
 		computationAPI = new ComputationAPIIm();
+		// Creates userComputingAPI with the real dependencies for validation test
+		DataStorageAPI dataStorageAPI = new DataStorageAPIIm();
+		userComputingAPI = new UserComputingAPIIm(dataStorageAPI,computationAPI);
 	}
 	
 	/*
@@ -43,7 +51,14 @@ public class TestComputationAPI {
 	public void testComputeFactorialNegative() throws Exception {
 		assertThrows(IllegalArgumentException.class, () -> {
 			computationAPI.computeFactorial(-5);
-		}, "Negative number should throw IllegalArgumentException");
+		}, "Throws exception if the number is negative");
+	}
+	
+	@Test
+	public void testNullRequestValidation() {
+	    assertThrows(IllegalArgumentException.class, () -> {
+	        userComputingAPI.submission(null);
+	    }, "Throws exception if request is null");
 	}
 
 }
