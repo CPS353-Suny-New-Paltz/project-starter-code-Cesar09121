@@ -29,6 +29,13 @@ public class UserComputingAPIIm implements UserComputingAPI {
 	 */
 	@Override
     public ComputingJobResponse submission(ComputingJobRequest request) {
+		
+	   if (request == null) {
+		      throw new IllegalArgumentException("Request cannot be null");
+	   }
+	   if (request.getInput() == null || request.getOutput() == null) {
+		      throw new IllegalArgumentException("Input and output sources required");
+	   }
        try {
     	   // Reads input from input location
     	   DataReadResponse readResponse = dataStorageAPI.readInput(new DataReadRequest(

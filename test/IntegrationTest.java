@@ -13,6 +13,8 @@ import project.networkapi.UserComputingAPI;
 import project.networkapi.ComputingJobRequest;
 import project.networkapi.ComputingJobResponse;
 import project.networkapi.ComputingJobSuccess;
+import project.networkapi.FileInputSource;
+import project.networkapi.FileOutputSource;
 import project.networkapi.UserComputingAPIIm;
 
 /*
@@ -23,10 +25,9 @@ import project.networkapi.UserComputingAPIIm;
 
 public class IntegrationTest {
 	
-	private UserComputingAPI userAPI;           // Main API that user interact with
+	private UserComputingAPI userComputingAPI;           // Main API that user interact with
 	private ComputationAPI computationAPI;	    // This component does calculations
 	private TestDataStorageMemory dataMemory;	// Test-only data storage works with in-memory data
-	
 	/*
 	 * Sets up test environment with components
 	 * Creates implementations connect together without mocks
@@ -35,7 +36,7 @@ public class IntegrationTest {
 	public void setUp() {
 		dataMemory = new TestDataStorageMemory();			// Creates test data storage works with in-memory data
 		computationAPI = new ComputationAPIIm();  			// Creates a real computationAPI
-		userAPI = new UserComputingAPIIm(dataMemory, computationAPI);  // Creates user API with both dependencies
+		userComputingAPI = new UserComputingAPIIm(dataMemory, computationAPI);  // Creates user API with both dependencies
 				
 	}
 	
@@ -58,7 +59,7 @@ public class IntegrationTest {
 		// Creates a job request with no delimiters
 		ComputingJobRequest request = new ComputingJobRequest(input, output, null);
 		// Submit the job through the system
-		ComputingJobResponse response = userAPI.submission(request);
+		ComputingJobResponse response = userComputingAPI.submission(request);
 		// Makes sure we get a response 
 		assertNotNull(response, "Response shouldn't be null");
 		// Checks that the job is successful
@@ -69,6 +70,21 @@ public class IntegrationTest {
 		assertNotNull(response.getOutput(), "Response should contain output source");
 		assertEquals(input, response.getInput(), "Response should reference the same input");
 		assertEquals(output, response.getOutput(), "Response should reference the same output");
+	}
+	
+	@Test
+	public void testExceptionHandling() {
+	    // Creates a request that will cause an exception
+	    ComputingJobRequest badRequest = new ComputingJobRequest( 
+	    		new FileInputSource("input.txt"),
+	    		new FileOutputSource("output.txt"),
+	            null
+	    );
+	    
+	    // Shouldn't throw exception and returns FAILED status instead
+	    ComputingJobResponse response = userComputingAPI.submission(badRequest);
+	    
+	    assertEquals(ComputingJobSuccess.FAILED, response.getStatus(),"Job should fail with non-existent input file");
 	}
 	
 	
