@@ -84,7 +84,7 @@ public class IntegrationTest {
 	    // Shouldn't throw exception and returns FAILED status instead
 	    ComputingJobResponse response = userComputingAPI.submission(badRequest);
 	    
-	    assertEquals(ComputingJobSuccess.FAILED, response.getStatus());
+	    assertEquals(ComputingJobSuccess.FAILED, response.getStatus(),"Job should fail with non-existent input file");
 	}
 	
 	
