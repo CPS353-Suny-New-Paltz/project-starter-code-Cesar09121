@@ -7,3 +7,7 @@ Given a positive integer n, the program runs the product of all positive integer
 ## System Diagram
 
 ![System Diagram](https://github.com/CPS353-Suny-New-Paltz/project-starter-code-Cesar09121/blob/Checkpoint2-demo/images/Factorial_Computing.jpg)
+
+## Multi-Threading
+I chose 4 as the maximum number of threads to run multiple factorial calculations at the same time.
+
