@@ -1,4 +1,4 @@
-package testHarness;
+package testharness;
 /*
  * Test harness for multi-threaded computing engine
  */

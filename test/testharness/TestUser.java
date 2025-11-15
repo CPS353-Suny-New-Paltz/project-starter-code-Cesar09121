@@ -1,4 +1,4 @@
-package testHarness;
+package testharness;
 /*
  * Shows a single user submitting job to the compute engine
  * Used for testing multiple users at once
