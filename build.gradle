@@ -73,3 +73,7 @@ protobuf {
 test {
     useJUnitPlatform()
 }
+
+tasks.named('compileJava') {
+    dependsOn 'generateProto'
+}
