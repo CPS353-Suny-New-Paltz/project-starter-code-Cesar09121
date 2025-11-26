@@ -12,7 +12,7 @@ import java.util.List;
 
 /*
  * grpc service implementation for file storage operations
- * Adapts the gRPC messages to the existing DataStorageAPI
+ * Adapts the grpc messages to the existing DataStorageAPI
  */
 public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImplBase {
     
@@ -38,7 +38,7 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
         // Calls storage implementation to read the file
         project.processapi.DataReadResponse apiResponse = dataStorageAPI.readInput(apiRequest);
             
-        // Build gRPC response
+        // Builds grpc response message
         DataReadResult.Builder resultBuilder = DataReadResult.newBuilder();
             
         // Checks if the reading was successful
@@ -57,7 +57,7 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
             System.err.println("Read failed");
          }
             
-            // Send response back to client
+            // Sends response back to client
             responseObserver.onNext(resultBuilder.build());
             responseObserver.onCompleted();
     }
@@ -67,21 +67,22 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
     @Override
     public void writeOutput(DataWriteRequest request, StreamObserver<DataWriteResult> responseObserver) {
         
+    	// Extracts file path and content from the grpc request
     	String filePath = request.getFilePath();
         String content = request.getContent();
         System.out.println("Writing file: " +filePath);
         
-        // Use our existing DataStorageAPI
+        // Converts grpc request to API request format
         project.processapi.DataWriteRequest apiRequest = new project.processapi.DataWriteRequest(filePath,content);
-        
+        // Calls storage implementation to write the file
         project.processapi.DataWriteResponse apiResponse = dataStorageAPI.writeOutput(apiRequest);
         
-        // Build gRPC response
+        // Builds grpc response message
         DataWriteResult result = DataWriteResult.newBuilder()
                 				.setSuccess(apiResponse.getStatus().isSuccess())
                 				.build();
         
-        // Send response
+        // Sends response back to client
         responseObserver.onNext(result);
         responseObserver.onCompleted();
         
