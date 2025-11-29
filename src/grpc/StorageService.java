@@ -31,6 +31,16 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
     	// Extracts file path from the grpc request
     	String filePath = request.getFilePath();
     	
+    	// Validation for the request
+    	if (filePath == null || filePath.isEmpty()) {
+    	     DataReadResult error = DataReadResult.newBuilder().setSuccess(false)
+    	    		 									       .setErrorMessage("File path cannot be null or empty")
+    	    		 								           .build();
+    	     
+    	     responseObserver.onNext(error);
+    	     responseObserver.onCompleted();
+    	     return;
+    	    }
         System.out.println("Read request: " + filePath);
         
         // Converts grpc request to API request format
@@ -53,7 +63,7 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
          } else {
         	// Sends failure response if reading failed
             resultBuilder.setSuccess(false);
-            
+            resultBuilder.setErrorMessage(apiResponse.getStatus().getMessage());
             System.err.println("Read failed");
          }
             
@@ -70,6 +80,15 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
     	// Extracts file path and content from the grpc request
     	String filePath = request.getFilePath();
         String content = request.getContent();
+        
+        // Validation for the request
+        if (filePath == null || filePath.isEmpty()) {
+            DataWriteResult error = DataWriteResult.newBuilder().setSuccess(false).build();
+            
+            responseObserver.onNext(error);
+            responseObserver.onCompleted();
+            return;
+        }
         System.out.println("Writing file: " +filePath);
         
         // Converts grpc request to API request format
@@ -79,8 +98,8 @@ public class StorageService extends DataStorageServiceGrpc.DataStorageServiceImp
         
         // Builds grpc response message
         DataWriteResult result = DataWriteResult.newBuilder()
-                				.setSuccess(apiResponse.getStatus().isSuccess())
-                				.build();
+                				                .setSuccess(apiResponse.getStatus().isSuccess())
+                			             	    .build();
         
         // Sends response back to client
         responseObserver.onNext(result);
