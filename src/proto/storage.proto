@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_package = "grpc.storage";
+option java_multiple_files = true;
+
+package storage;
+
+// Request message for reading data from a file
+message DataReadRequest {
+    string file_path = 1;
+}
+
+// Response message including the data read from a file
+message DataReadResult {
+    repeated int32 numbers = 1;
+    bool success = 2;
+    string error_message = 3;
+}
+
+// Request message for writing data to a file
+message DataWriteRequest {
+    string file_path = 1;
+    string content = 2;
+}
+
+// Response message for the writing operation
+message DataWriteResult {
+    bool success = 1;
+}
+
+// Service for handling the file storage operation over grpc
+service DataStorageService {
+    rpc ReadInput(DataReadRequest) returns (DataReadResult);   
+    rpc WriteOutput(DataWriteRequest) returns (DataWriteResult);
+}
