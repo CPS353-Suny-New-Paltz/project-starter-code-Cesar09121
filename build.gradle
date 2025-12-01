@@ -68,7 +68,20 @@ protobuf {
 }
 }
 
+task runStorageServer(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'grpc.StorageServer'
+}
 
+task runComputeServer(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'grpc.ComputeServer'
+}
+
+task runComputeClient(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'client.ComputeClient'
+}
 
 test {
     useJUnitPlatform()
