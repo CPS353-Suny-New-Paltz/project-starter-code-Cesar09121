@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "grpc.computation";
+option java_multiple_files = true;
+
+package computation;
+
+// Request message for job computing submission
+message ComputingJobRequest {
+    string input_location = 1;
+    string output_location = 2;
+    string delimiter = 3;
+}
+
+// Response message includes job status
+message ComputingJobResult {
+    JobStatusCode job_status = 1;
+}
+
+enum JobStatusCode {
+    SUCCESS = 0;	// Job completed successfully
+    BAD_REQUEST = 1; // Job failed due to bad request (bad input)
+}
+
+// Service for handling factorial computation jobs
+service ComputingService {
+    rpc SubmitJob(ComputingJobRequest) returns (ComputingJobResult);
+}
