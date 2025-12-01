@@ -7,7 +7,6 @@ import grpc.storage.DataReadResult;
 import grpc.storage.DataWriteRequest;
 import grpc.storage.DataWriteResult;
 import grpc.storage.DataStorageServiceGrpc;
-import grpc.storage.DataStorageServiceGrpc.DataStorageServiceFutureStub;
 import project.processapi.DataStorageAPI;
 import project.processapi.DataOperationStatus;
 import project.processapi.DataReadResponse;
@@ -74,6 +73,10 @@ public class StorageClient implements DataStorageAPI {
 		// Gets file path and content from API request (location and formatted result)
 		String filePath = apiWriteRequest.getLocation();
 		String formattedResult = apiWriteRequest.getFormattedResult();
+		// Formatted result validation
+		if (formattedResult == null) {
+		    return new DataWriteResponse(DataOperationStatus.FAILED);
+		}
 		// Converts to the grpc request format
 		DataWriteRequest grpcWriteRequest = DataWriteRequest.newBuilder()
 															.setFilePath(filePath)

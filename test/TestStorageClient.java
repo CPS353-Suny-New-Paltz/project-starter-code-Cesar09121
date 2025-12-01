@@ -10,7 +10,7 @@ public class TestStorageClient {
     // Sets up the test environment before each test method run
     @BeforeEach
     public void setUp() {
-        storageClient = new StorageClient("localhost",50052);
+        storageClient = new StorageClient("localhost", 50052);
     }
 
     // Smoke test to check if client object is created
