@@ -1,4 +1,5 @@
 package project.networkapi;
+import java.math.BigInteger;
 import java.util.List;
 
 import project.conceptualapi.ComputationAPI;
@@ -54,7 +55,7 @@ public class UserComputingAPIIm implements UserComputingAPI {
     	   for (int i =0;i< inputData.size();i++) {
     		   
     		   // Asks computation component to calculate the factorial
-    		   long factorial = computationAPI.computeFactorial(inputData.get(i));
+    		   BigInteger factorial = computationAPI.computeFactorial(inputData.get(i));
     		   
     		   // Format as a string (like "3!= 6")
     		   results.append(inputData.get(i))

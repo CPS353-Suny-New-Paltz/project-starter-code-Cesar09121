@@ -1,4 +1,7 @@
 package project.conceptualapi;
+
+import java.math.BigInteger;
+
 /*
  * Implementation of ComputingAPI for factorial calculation
  * Handles the computation of factorial for the positive integers
@@ -9,19 +12,19 @@ public class ComputationAPIIm implements ComputationAPI{
 		 * Calculates factorial of a given positive integer
 		 */
 	    @Override
-	    public long computeFactorial(int input) {
+	    public BigInteger computeFactorial(int input) {
 	    	// Does not take negative integer
 	        if(input< 0) {
 	        	throw new IllegalArgumentException("Invalid integer!! (must be positive)");
 	        }
 	        // 0! =1 and 1! = 1
 	        if(input ==0 || input ==1) {
-	        	return 1;
+	        	return BigInteger.ONE;
 	        }
 	        // Calculates factorial
-	        long result =1;
+	        BigInteger result = BigInteger.ONE;
 	        for(int i =2;i<=input;i++) {
-	        	result *= i;
+	        	result = result.multiply(BigInteger.valueOf(i));
 	        }
 	        return result;
 	    }
