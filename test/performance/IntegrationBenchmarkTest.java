@@ -1,6 +1,9 @@
 package performance;
 
 import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+
 import org.junit.jupiter.api.Assertions;
 import project.conceptualapi.ComputationAPIIm;
 import project.conceptualapi.ComputationAPIImUpdated;
@@ -23,8 +26,8 @@ public class IntegrationBenchmarkTest {
         long originalStart = System.currentTimeMillis();
         for (int i = 0; i < repeat; i++) {
             for (int j = 1; j <= range; j++) {
-                long result = original.computeFactorial(j);
-                Assertions.assertTrue(result > 0, "Factorial should be positive");
+                BigInteger result = original.computeFactorial(j);
+                Assertions.assertTrue(result.compareTo(BigInteger.ZERO)> 0, "Factorial should be positive");
             }
         }
         long originalTime = System.currentTimeMillis() - originalStart;
@@ -35,8 +38,8 @@ public class IntegrationBenchmarkTest {
         long updatedStart = System.currentTimeMillis();
         for (int i = 0; i < repeat; i++) {
             for (int j = 1; j <= range; j++) {
-                long result = updated.computeFactorial(j);
-                Assertions.assertTrue(result > 0, "Factorial should be positive");
+                BigInteger result = updated.computeFactorial(j);
+                Assertions.assertTrue(result.compareTo(BigInteger.ZERO)> 0, "Factorial should be positive");
             }
         }
         long updatedTime = System.currentTimeMillis() - updatedStart;
