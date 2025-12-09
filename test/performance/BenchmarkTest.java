@@ -20,7 +20,7 @@ public class BenchmarkTest {
 		ComputationAPIImUpdated updated = new ComputationAPIImUpdated();
 		
 		int repeat = 100000;
-		int range = 20;
+		int range = 30;
 		
 		// Measures how long the original implementation takes
 		long originalStart = System.currentTimeMillis();

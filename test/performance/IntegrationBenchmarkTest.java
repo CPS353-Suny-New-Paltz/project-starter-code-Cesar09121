@@ -18,7 +18,7 @@ public class IntegrationBenchmarkTest {
     public void testIntegratedPerformance() {
         
         int repeat = 100000;
-        int range = 20;
+        int range = 30;
         
         // Tests with original implementation integrated into coordinator
         ComputationAPIIm original = new ComputationAPIIm();
@@ -52,7 +52,7 @@ public class IntegrationBenchmarkTest {
         System.out.println("Improvement: " + improvement + "%");
         
         // Makes sure both produce same results
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= 50; i++) {
             Assertions.assertEquals(original.computeFactorial(i),
             						updated.computeFactorial(i),
             						"Both implementations should have same result"
