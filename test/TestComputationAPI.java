@@ -3,6 +3,8 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.math.BigInteger;
+
 import project.conceptualapi.ComputationAPIIm;
 import project.networkapi.UserComputingAPI;
 import project.networkapi.UserComputingAPIIm;
@@ -38,10 +40,9 @@ public class TestComputationAPI {
 	@Test
 	public void testComputeFactorial() throws Exception{
 		// Tests the factorial with input 3
-		long result = computationAPI.computeFactorial(3);
-		
+		BigInteger result = computationAPI.computeFactorial(3);
 
-		assertEquals(6,result, "Calculate actual factorial and the result should be 6");
+		assertEquals(BigInteger.valueOf(6),result, "Calculate actual factorial and the result should be 6");
 		
 	}
 	/*
