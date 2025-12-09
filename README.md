@@ -10,3 +10,32 @@ Given a positive integer n, the program runs the product of all positive integer
 
 ## Multi-Threading
 I chose 4 as the maximum number of threads to run multiple factorial calculations at the same time.
+
+## Integration Benchmark Test
+
+### Results
+
+- Original: 45ms
+- Updated: 10ms
+- Improvement: 77.78%
+
+### Link to Benchmark Test
+
+[`test/performance/IntegrationBenchmarkTest.java`](test/performance/IntegrationBenchmarkTest.java)
+
+### The Issue With the Original Computation
+
+The original computation recalculated factorial from scratch every time even for the repeated input.
+
+### The Fix
+
+Implemented caching using a static array for factorial from 0 to 20. When the computation is requested, the result is instantly retrieved from the cache instead of recalculation.
+
+### Link to PR for the Fix
+
+`https://github.com/CPS353-Suny-New-Paltz/project-starter-code-Cesar09121/pull/54`
+
+
+
+
+	
