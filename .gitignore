@@ -9,3 +9,4 @@ build
 bin
 *.class
 gradle.properties 
+test/temp_input_*txt 
