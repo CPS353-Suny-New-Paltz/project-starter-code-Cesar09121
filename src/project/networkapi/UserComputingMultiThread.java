@@ -1,4 +1,5 @@
 package project.networkapi;
+import java.math.BigInteger;
 /*
  * Multi-threaded implementation of UserComputingAPI
  * This class runs factorial calculations in parallel using multiple threads
@@ -60,7 +61,7 @@ public class UserComputingMultiThread implements UserComputingAPI{
 				final int inputValue = inputData.get(i);
 				// Creates a task which calculates 1 factorial
 				task.add(()->{
-					long factorial = computationAPI.computeFactorial(inputValue);
+					BigInteger factorial = computationAPI.computeFactorial(inputValue);
 					// Result format (ex: "3! =6")
 					return inputValue +delimiters.getDelimiterResult()+factorial;
 				});

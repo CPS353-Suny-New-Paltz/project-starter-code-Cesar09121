@@ -1,4 +1,6 @@
 package project.conceptualapi;
+import java.math.BigInteger;
+
 import project.annotations.ConceptualAPIPrototype;
 
 /*
@@ -13,7 +15,7 @@ public class ComputationAPIPrototype {
 	public void prototype(ComputationAPI computationAPI) {
 		
 		// Calculating factorial of the given input value ( input value in this case is 4)
-		long result = computationAPI.computeFactorial(4);
+		BigInteger result = computationAPI.computeFactorial(4);
 	
 	}
 }

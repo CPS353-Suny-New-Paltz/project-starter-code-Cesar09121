@@ -1,5 +1,6 @@
 package performance;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import project.conceptualapi.ComputationAPIIm;
 import project.conceptualapi.ComputationAPIImUpdated;
@@ -19,7 +20,7 @@ public class BenchmarkTest {
 		ComputationAPIImUpdated updated = new ComputationAPIImUpdated();
 		
 		int repeat = 100000;
-		int range = 20;
+		int range = 30;
 		
 		// Measures how long the original implementation takes
 		long originalStart = System.currentTimeMillis();
@@ -46,5 +47,11 @@ public class BenchmarkTest {
 		System.out.println("Original: " +originalTime + " ms");
 		System.out.println("Updated: "+ updatedTime + " ms");
 		System.out.println("Improvement: " +improvement + "%");
+		
+		Assertions.assertEquals(original.computeFactorial(10),
+								updated.computeFactorial(10),
+								"Both implementations should have the same results!");
+		
+		Assertions.assertTrue(improvement>=10,"We had "+improvement + "% improvememt!");
 	}
 }
