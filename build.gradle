@@ -40,8 +40,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter:5.10.2')
+    testImplementation('org.junit.jupiter:junit-jupiter:5.13.4')
 	testImplementation('org.mockito:mockito-core:5.10.0')
+	testRuntimeOnly('org.junit.platform:junit-platform-launcher')
 	implementation('com.google.code.gson:gson:2.13.1')
 	implementation 'fr.inria.gforge.spoon:spoon-core:11.2.0'
 	
@@ -85,6 +86,11 @@ task runComputeClient(type: JavaExec) {
 
 test {
     useJUnitPlatform()
+    testLogging {
+       events "passed", "skipped", "failed", "standardOut", "standardError"
+       showStandardStreams = true
+   }
+    
 }
 
 tasks.named('compileJava') {
