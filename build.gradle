@@ -82,6 +82,7 @@ task runComputeServer(type: JavaExec) {
 task runComputeClient(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'client.ComputeClient'
+    standardInput = System.in
 }
 
 test {
