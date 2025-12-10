@@ -19,6 +19,12 @@ I chose 4 as the maximum number of threads to run multiple factorial calculation
 - Updated: 10ms
 - Improvement: 77.78%
 
+### Updated result after changing return type from long to BigInteger
+
+- Original: 1051ms
+- Updated: 7ms
+- Improvement: 99.33%
+
 ### Link to Benchmark Test
 
 [`test/performance/IntegrationBenchmarkTest.java`](test/performance/IntegrationBenchmarkTest.java)
@@ -29,7 +35,7 @@ The original computation recalculated factorial from scratch every time even for
 
 ### The Fix
 
-Implemented caching using a static array for factorial from 0 to 20. When the computation is requested, the result is instantly retrieved from the cache instead of recalculation.
+Implemented caching using a static array for factorial from 0 to 50. When the computation is requested, the result is instantly retrieved from the cache instead of recalculation.
 
 ### Link to PR for the Fix
 
