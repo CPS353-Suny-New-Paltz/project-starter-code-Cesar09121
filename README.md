@@ -41,7 +41,9 @@ Implemented caching using a static array for factorial from 0 to 50. When the co
 
 `https://github.com/CPS353-Suny-New-Paltz/project-starter-code-Cesar09121/pull/54`
 
+### Link to PR for the updated return type
 
+`https://github.com/CPS353-Suny-New-Paltz/project-starter-code-Cesar09121/pull/56`
 
 
 	
