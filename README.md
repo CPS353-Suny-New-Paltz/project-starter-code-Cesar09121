@@ -41,11 +41,7 @@ Implemented caching using a static array for factorial from 0 to 50. When the co
 
 `https://github.com/CPS353-Suny-New-Paltz/project-starter-code-Cesar09121/pull/54`
 
-### Updated result after changing return type from long to BigInteger
 
-- Original: 1051ms
-- Updated: 7ms
-- Improvement: 
 
 
 	
