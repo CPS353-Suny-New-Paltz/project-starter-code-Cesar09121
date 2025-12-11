@@ -42,6 +42,12 @@ Implemented caching using a static array for factorial from 0 to 50. When the co
 `https://github.com/CPS353-Suny-New-Paltz/project-starter-code-Cesar09121/pull/54`
 
 
+### Extended input flexibility
+
+Added more input options to make the system easier to use and save more time
+
+- CSV file support
+- Range notation (Ex: type "1-10" or "1-10,13-20" instead of typing all of the needed numbers)
 
 
 	
