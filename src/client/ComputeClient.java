@@ -15,6 +15,10 @@ import java.util.Scanner;
 /*
  * User-facing client for submitting factorial computation jobs
  * Connects to ComputeServer and submits jobs for processing
+ * 
+ * Extends the input flexibility by supporting more input options:
+ * - CSV file
+ * - Range notation (Ex: type "1-10" or "1-10,13-20" instead of typing all of the needed numbers)
  */
 public class ComputeClient {
 
