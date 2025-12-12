@@ -176,11 +176,11 @@ public class ComputeClient {
 					for(int i =start;i <= end;i++) {
 						numbers.add(i);
 					}
-				}
-				else {
+				} else {
 					// Single number case
 					numbers.add(Integer.parseInt(part));
 				}
+				
 			}
 			return numbers;
 		}
@@ -246,7 +246,9 @@ public class ComputeClient {
 				boolean first = true;
 				
 				for(String entry : entries) {
-					if(entry.trim().isEmpty()) continue;
+					if(entry.trim().isEmpty()) {
+						continue;
+					}
 					
 					// Parses format " input! = output"
 					// "!" and "=" will not be used in the JSON format
