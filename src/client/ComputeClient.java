@@ -31,6 +31,12 @@ public class ComputeClient {
         // Checks if user gave command line argument
         if (args.length >= 2) {       	
         	 if (args[0].equals("-number")) {
+        		 
+        		 if(args.length < 3) {
+        			 System.err.println("Error: Missing arguments for -number!");
+        			 System.err.println("Format should be: -number <numbers> <output-file> <delimiter>");
+        			 System.exit(1);
+        		 }
                  // In-memory mode: -number "5,8,14,19" output.txt ";" for example
                  String numbers = args[1];
                  // Parses the numbers (handles range or list of numbers)
@@ -41,6 +47,11 @@ public class ComputeClient {
              } else {
                  // File mode: input.txt output.txt ";" 
                  String inputFile = args[0];
+                 if(args.length < 2) {
+                	 System.err.println("Error: Output file needed");
+                	 System.err.println("Format should be: <input-file> <output-file> <delimiter>");
+                	 System.exit(1);
+                 }
                  // Checks if it's a CSV file
                  if(inputFile.endsWith(".csv")) {
                 	 List<Integer>numbers = parseCSV(inputFile);
