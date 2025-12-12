@@ -19,6 +19,7 @@ import java.util.Scanner;
  * Extends the input flexibility by supporting more input options:
  * - CSV file
  * - Range notation (Ex: type "1-10" or "1-10,13-20" instead of typing all of the needed numbers)
+ * - JSON output format 
  */
 public class ComputeClient {
 
@@ -27,6 +28,7 @@ public class ComputeClient {
 		String inputLocation;
         String outputLocation;
         String delimiter;
+        String outputFileFormat ="text";
 
         // Checks if user gave command line argument
         if (args.length >= 2) {       	
@@ -35,6 +37,8 @@ public class ComputeClient {
         		 if(args.length < 3) {
         			 System.err.println("Error: Missing arguments for -number!");
         			 System.err.println("Format should be: -number <numbers> <output-file> <delimiter>");
+        			 // Command line for converting to JSON file format
+        			 System.err.println("Command line example: -number 1-15 output.json ; --format json");
         			 System.exit(1);
         		 }
                  // In-memory mode: -number "5,8,14,19" output.txt ";" for example
@@ -43,10 +47,16 @@ public class ComputeClient {
                  List<Integer> parsedNumbers = parseNumbers(numbers);
                  inputLocation = tempFile(parsedNumbers);
                  outputLocation = args[2];
-                 delimiter = args.length >= 4 ? args[3] : ";";
+                 delimiter = args.length >= 4 ? args[3] : ";";              
+                 // Checks if user wants the JSON output format
+                 if (args.length >= 6 && args[4].equals("--format")) {
+                	    outputFileFormat = args[5];
+                	}
+                 
              } else {
                  // File mode: input.txt output.txt ";" 
                  String inputFile = args[0];
+                 // Makes sure output file is provided
                  if(args.length < 2) {
                 	 System.err.println("Error: Output file needed");
                 	 System.err.println("Format should be: <input-file> <output-file> <delimiter>");
@@ -62,7 +72,11 @@ public class ComputeClient {
                  }
                  // Gets output and delimiters
                  outputLocation = args[1];
-                 delimiter = args.length >= 3 ? args[2] : ";";
+                 delimiter = args.length >= 3 ? args[2] : ";";                
+                 // Checks for format flag
+                 if (args.length >= 5 && args[3].equals("--format")) {
+                	    outputFileFormat = args[4];
+                	}
              }
             
         } else {
@@ -99,6 +113,10 @@ public class ComputeClient {
             String delimiterInput = scanner.nextLine();
             delimiter = delimiterInput.isEmpty() ? ";" : delimiterInput;
 
+            // Asks for output format
+            System.out.print("Output format (text/json, default text): ");
+            String formatInput = scanner.nextLine();
+            outputFileFormat = formatInput.isEmpty() ? "text" : formatInput;
             scanner.close();
         }
         // Creates a connection to ComputeServer
@@ -123,6 +141,10 @@ public class ComputeClient {
 
         if (result.getJobStatus() == JobStatusCode.SUCCESS) {
             System.out.println("SUCCESS: Sending results to "+ outputLocation);
+            
+            if(outputFileFormat.equals("json")) {
+            	convertToJSON(outputLocation,delimiter);
+            }
         } else {
             System.out.println("FAILED: " +result.getJobStatus());
         }
@@ -190,7 +212,75 @@ public class ComputeClient {
 			}
 			return numbers;
 		}
-	
+		
+		// Converts text output to JSON format
+		private static void convertToJSON(String outputFile, String delimiter) {
+			try {
+				// Checks if the file exists
+				File file = new File(outputFile);
+		        if (!file.exists()) {
+		            System.err.println("Error: Cannot find the output file to convert");
+		            return;
+		        }
+		        
+				// Reads the text output file
+				Scanner scanner = new Scanner(new File(outputFile));
+				String content ="";
+				if(scanner.hasNextLine()) {
+					content = scanner.nextLine();
+				}
+				scanner.close();
+				
+				// Checks if file is empty
+	            if (content.trim().isEmpty()) {
+	                System.err.println("Error: Cannot convert an empty file");
+	                return;
+	            }
+				// Builds the JSON format
+				StringBuilder json = new StringBuilder();
+				json.append("{\n  \"Factorial results\": [\n");
+				
+				// Splits results by delimiter
+				String[]entries = content.split(delimiter);
+				// Tracks if this is the first entry
+				boolean first = true;
+				
+				for(String entry : entries) {
+					if(entry.trim().isEmpty()) continue;
+					
+					// Parses format " input! = output"
+					// "!" and "=" will not be used in the JSON format
+					String[]parts = entry.split("=");
+					if(parts.length == 2) {
+						String input = parts[0].replace("!", "").trim();
+						String factorial = parts[1].trim();
+						
+						// Adds comma before all entry except the first one
+						if(!first) {
+							json.append(",\n");
+						}
+						first = false;
+						
+						// Builds JSON entry
+						json.append("  	 {\"input\": ")
+							.append(input)
+							.append(",  \"factorial\":  \"")
+							.append(factorial)
+							.append("\"}");
+					}
+				}
+				json.append("\n   ]\n}");
+				
+				// Writes JSON back to the same file
+				PrintWriter writer = new PrintWriter(outputFile);
+				writer.println(json.toString());
+				writer.close();
+				
+				System.out.println("Converted output file to JSON format");
+			} catch (Exception e) {
+				System.err.println("Cannot convert to JSON format "+ e.getMessage());
+			}
+		}
 	
 		// Creates temporary file from comma-separated numbers
 		private static String tempFile(List<Integer>numbers) {
