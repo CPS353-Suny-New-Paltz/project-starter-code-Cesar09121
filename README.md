@@ -51,7 +51,7 @@ Added more input options to make the system easier to use and save more time.
 
 Added JSON output format option to make the results easier to read.
 Ex: 
-{
+`{
   "Factorial results": [
   	 {"input": 5,  "factorial":  "120"},
   	 {"input": 6,  "factorial":  "720"},
@@ -59,7 +59,7 @@ Ex:
   	 {"input": 8,  "factorial":  "40320"},
   	 {"input": 9,  "factorial":  "362880"},
   	]
-}
+}`
 
 
 	
